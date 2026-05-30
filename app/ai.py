@@ -22,7 +22,7 @@ def get_model():
         _model.load_state_dict(torch.load(CHECKPOINT, map_location=DEVICE))
         _model = _model.to(DEVICE)
         _model.eval()
-        logger.info("Model loaded.")
+        logger.info(f"Model loaded on {DEVICE}")
     return _model
 
 

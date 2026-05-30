@@ -25,19 +25,26 @@ services:
         fi
 
   fastapi:
-    build: .
-    restart: unless-stopped
-    volumes:
-      - media:/media
-      - ./checkpoints:/app/checkpoints:ro
-    environment:
-      - UPLOADS_DIR=/media/uploads
-      - PROCESSED_DIR=/media/processed
-    expose:
-      - "8000"
-    depends_on:
-      ssl-init:
-        condition: service_completed_successfully
+      build: .
+      restart: unless-stopped
+      volumes:
+        - media:/media
+        - ./checkpoints:/app/checkpoints:ro
+      environment:
+        - UPLOADS_DIR=/media/uploads
+        - PROCESSED_DIR=/media/processed
+      expose:
+        - "8000"
+      deploy:
+        resources:
+          reservations:
+            devices:
+              - driver: nvidia
+                count: 1
+                capabilities: [gpu]
+      depends_on:
+        ssl-init:
+          condition: service_completed_successfully
 
   nginx:
     image: nginx:alpine
