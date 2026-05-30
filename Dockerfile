@@ -1,4 +1,4 @@
-FROM python:3.14-slim
+FROM pytorch/pytorch:2.3.0-cuda12.1-cudnn8-runtime
 
 RUN apt-get update && apt-get install -y \
     gcc \
@@ -9,13 +9,12 @@ WORKDIR /app
 
 COPY pyproject.toml .
 
-RUN pip install --no-cache-dir \
+RUN pip install --no-cache-dir --timeout 300 \
     "fastapi>=0.136.3,<0.137.0" \
     "uvicorn[standard]>=0.48.0,<0.49.0" \
     "python-multipart>=0.0.29,<0.0.30" \
     "jinja2>=3.1.6,<4.0.0" \
     "loguru>=0.7.0" \
-    "torch>=2.0.0,<3.0.0" \
     "numpy>=1.26.0,<3.0.0" \
     "pillow>=10.0.0,<12.0.0" \
     "rasterio>=1.3.0,<2.0.0" \

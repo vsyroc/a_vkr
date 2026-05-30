@@ -11,7 +11,7 @@ PROCESSED_DIR = pathlib.Path(os.getenv("PROCESSED_DIR", BASE_DIR / "processed"))
 
 # Модель
 CHECKPOINT = BASE_DIR / "checkpoints" / "train_phosphorusV11_2_1200.pth"
-DEVICE = "cuda:0" if torch.cuda.is_available() else "cpu"
+DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 NUM_CLASSES = 2
 
 # Инференс
