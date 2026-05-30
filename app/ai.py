@@ -3,61 +3,85 @@ import numpy as np
 import torch
 import torch.nn.functional as F
 from PIL import Image
-from app.config import CHECKPOINT, DEVICE
+from app.config import CHECKPOINT, DEVICE, CROP_SIZE
+from simple_lama_inpainting import SimpleLama
 from loguru import logger
 import rasterio
 from time import perf_counter
 
 from app.networks.modeling import deeplabv3plus_mobilenet
 
-# Модель загружается один раз при старте приложения
 _model = None
+_lama = None
 
 
 def get_model():
     global _model
     if _model is None:
-        logger.info("Loading model...")
+        logger.info("Loading segmentation model...")
         _model = deeplabv3plus_mobilenet(num_classes=2)
         _model.load_state_dict(torch.load(CHECKPOINT, map_location=DEVICE))
         _model = _model.to(DEVICE)
         _model.eval()
-        logger.info(f"Model loaded. {DEVICE}")
+        logger.info(f"Segmentation model loaded. {DEVICE}")
     return _model
 
 
+def get_lama():
+    global _lama
+    if _lama is None:
+        logger.info("Loading LaMa model...")
+        _lama = SimpleLama()
+        logger.info("LaMa model loaded.")
+    return _lama
+
+
 def run_inference(
-    model, input_path: pathlib.Path, output_path: pathlib.Path, crop: int = 3000
+    model,
+    input_path: pathlib.Path,
+    mask_path: pathlib.Path,
+    inpainted_path: pathlib.Path,
+    crop: int = CROP_SIZE,
 ) -> None:
     """
-    Принимает путь к изображению, запускает модель, сохраняет результат.
+    1. Читает изображение
+    2. Запускает сегментацию → сохраняет маску в mask_path
+    3. Запускает LaMa inpainting → сохраняет результат в inpainted_path
     """
 
-    # Конвертируем входной файл в TIFF для gdal
+    # --- Конвертация в TIFF для rasterio ---
     tif_path = input_path.with_suffix(".tif")
     img_pil = Image.open(input_path).convert("RGB")
     img_pil.save(tif_path, format="TIFF")
 
-    # Читаем через rasterio
     with rasterio.open(tif_path) as src:
         w = min(crop, src.width)
         h = min(crop, src.height)
-        image = src.read(window=rasterio.windows.Window(0, 0, w, h)).astype(np.float32)
+        image_arr = src.read(window=rasterio.windows.Window(0, 0, w, h)).astype(
+            np.float32
+        )
 
-    # Нормализация
-    image = (image / 255.0 * 2) - 1
+    tif_path.unlink(missing_ok=True)
+
+    # --- Сегментация ---
+    image_norm = (image_arr / 255.0 * 2) - 1
 
     t0 = perf_counter()
     with torch.no_grad():
-        tensor = torch.from_numpy(image[np.newaxis]).to(DEVICE)
+        tensor = torch.from_numpy(image_norm[np.newaxis]).to(DEVICE)
         head = model(tensor)
         head = F.sigmoid(head)
-    logger.info(f"Inference time: {perf_counter() - t0:.3f}s")
+    logger.info(f"Segmentation time: {perf_counter() - t0:.3f}s")
 
-    # Сохраняем результат
-    head_np = head.cpu().numpy()[0, 0]
-    head_rescaled = (head_np * 255).astype(np.uint8)
-    Image.fromarray(head_rescaled).save(output_path)
+    head_np = head.cpu().numpy()[0, 0]  # (h, w) float32, 0..1
+    mask_uint8 = (head_np * 255).astype(np.uint8)
+    Image.fromarray(mask_uint8).save(mask_path)
 
-    # Убираем временный .tif
-    tif_path.unlink(missing_ok=True)
+    # --- LaMa inpainting ---
+    lama = get_lama()
+
+    orig_pil = Image.open(input_path).convert("RGB")
+    mask_pil = Image.fromarray(mask_uint8).convert("L")
+
+    inpainted_pil = lama(orig_pil, mask_pil)
+    inpainted_pil.save(inpainted_path)

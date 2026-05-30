@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ru" data-theme="dark">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,39 +10,61 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --color-bg:               #171614;
-      --color-surface:          #1c1b19;
-      --color-surface-2:        #201f1d;
-      --color-surface-offset:   #1d1c1a;
-      --color-border:           rgba(205,204,202,.08);
-      --color-divider:          rgba(205,204,202,.05);
-      --color-text:             #cdccca;
-      --color-text-muted:       #797876;
-      --color-text-faint:       #5a5957;
-      --color-primary:          #4f98a3;
-      --color-primary-hover:    #227f8b;
-      --color-primary-active:   #1a626b;
-      --color-primary-hl:       #313b3b;
-      --color-error:            #d163a7;
-      --color-success:          #6daa45;
-      --radius-sm: .375rem; --radius-md: .5rem; --radius-lg: .75rem; --radius-xl: 1rem; --radius-full: 9999px;
-      --shadow-sm: 0 1px 2px rgba(0,0,0,.2);
-      --shadow-md: 0 4px 12px rgba(0,0,0,.3);
-      --shadow-lg: 0 12px 32px rgba(0,0,0,.4);
-      --transition: 180ms cubic-bezier(.16,1,.3,1);
-      --space-1:.25rem; --space-2:.5rem; --space-3:.75rem; --space-4:1rem;
-      --space-5:1.25rem; --space-6:1.5rem; --space-8:2rem; --space-10:2.5rem;
-      --space-12:3rem; --space-16:4rem;
-      --text-xs:clamp(.75rem,.7rem + .25vw,.875rem);
-      --text-sm:clamp(.875rem,.8rem + .35vw,1rem);
-      --text-base:clamp(1rem,.95rem + .25vw,1.125rem);
-      --text-lg:clamp(1.125rem,1rem + .75vw,1.5rem);
-      --text-xl:clamp(1.5rem,1.2rem + 1.25vw,2.25rem);
+      --color-bg: #171614;
+      --color-surface: #1c1b19;
+      --color-surface-2: #201f1d;
+      --color-surface-offset: #1d1c1a;
+      --color-border: rgba(205, 204, 202, .08);
+      --color-divider: rgba(205, 204, 202, .05);
+      --color-text: #cdccca;
+      --color-text-muted: #797876;
+      --color-text-faint: #5a5957;
+      --color-primary: #4f98a3;
+      --color-primary-hover: #227f8b;
+      --color-primary-active: #1a626b;
+      --color-primary-hl: #313b3b;
+      --color-error: #d163a7;
+      --color-success: #6daa45;
+      --radius-sm: .375rem;
+      --radius-md: .5rem;
+      --radius-lg: .75rem;
+      --radius-xl: 1rem;
+      --radius-full: 9999px;
+      --shadow-sm: 0 1px 2px rgba(0, 0, 0, .2);
+      --shadow-md: 0 4px 12px rgba(0, 0, 0, .3);
+      --shadow-lg: 0 12px 32px rgba(0, 0, 0, .4);
+      --transition: 180ms cubic-bezier(.16, 1, .3, 1);
+      --space-1: .25rem;
+      --space-2: .5rem;
+      --space-3: .75rem;
+      --space-4: 1rem;
+      --space-5: 1.25rem;
+      --space-6: 1.5rem;
+      --space-8: 2rem;
+      --space-10: 2.5rem;
+      --space-12: 3rem;
+      --space-16: 4rem;
+      --text-xs: clamp(.75rem, .7rem + .25vw, .875rem);
+      --text-sm: clamp(.875rem, .8rem + .35vw, 1rem);
+      --text-base: clamp(1rem, .95rem + .25vw, 1.125rem);
+      --text-lg: clamp(1.125rem, 1rem + .75vw, 1.5rem);
+      --text-xl: clamp(1.5rem, 1.2rem + 1.25vw, 2.25rem);
       --font-body: 'Inter', system-ui, sans-serif;
     }
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { -webkit-font-smoothing: antialiased; scroll-behavior: smooth; }
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      -webkit-font-smoothing: antialiased;
+      scroll-behavior: smooth;
+    }
+
     body {
       min-height: 100dvh;
       font-family: var(--font-body);
@@ -51,25 +74,57 @@
       display: flex;
       flex-direction: column;
     }
-    img { display: block; max-width: 100%; }
-    button { cursor: pointer; font: inherit; color: inherit; border: none; background: none; }
-    a, button, input { transition: color var(--transition), background var(--transition), border-color var(--transition), box-shadow var(--transition), opacity var(--transition); }
-    :focus-visible { outline: 2px solid var(--color-primary); outline-offset: 3px; border-radius: var(--radius-sm); }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    button {
+      cursor: pointer;
+      font: inherit;
+      color: inherit;
+      border: none;
+      background: none;
+    }
+
+    a,
+    button,
+    input {
+      transition: color var(--transition), background var(--transition), border-color var(--transition), box-shadow var(--transition), opacity var(--transition);
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--color-primary);
+      outline-offset: 3px;
+      border-radius: var(--radius-sm);
+    }
 
     .header {
-      position: sticky; top: 0; z-index: 10;
+      position: sticky;
+      top: 0;
+      z-index: 10;
       background: var(--color-surface);
       border-bottom: 1px solid var(--color-border);
       padding: var(--space-4) var(--space-6);
-      display: flex; align-items: center;
+      display: flex;
+      align-items: center;
       box-shadow: var(--shadow-sm);
     }
+
     .logo {
-      display: flex; align-items: center; gap: var(--space-3);
-      font-size: var(--text-lg); font-weight: 600; color: var(--color-text);
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      font-size: var(--text-lg);
+      font-weight: 600;
+      color: var(--color-text);
       text-decoration: none;
     }
-    .logo svg { color: var(--color-primary); }
+
+    .logo svg {
+      color: var(--color-primary);
+    }
 
     main {
       flex: 1;
@@ -79,8 +134,18 @@
       padding: var(--space-12) var(--space-6);
     }
 
-    .page-title { font-size: var(--text-xl); font-weight: 700; color: var(--color-text); margin-bottom: var(--space-2); }
-    .page-subtitle { font-size: var(--text-base); color: var(--color-text-muted); margin-bottom: var(--space-10); }
+    .page-title {
+      font-size: var(--text-xl);
+      font-weight: 700;
+      color: var(--color-text);
+      margin-bottom: var(--space-2);
+    }
+
+    .page-subtitle {
+      font-size: var(--text-base);
+      color: var(--color-text-muted);
+      margin-bottom: var(--space-10);
+    }
 
     .upload-zone {
       border: 2px dashed var(--color-border);
@@ -92,25 +157,64 @@
       transition: border-color var(--transition), background var(--transition);
       position: relative;
     }
-    .upload-zone:hover, .upload-zone.drag-over {
+
+    .upload-zone:hover,
+    .upload-zone.drag-over {
       border-color: var(--color-primary);
       background: color-mix(in oklch, var(--color-primary) 4%, var(--color-surface));
     }
-    .upload-zone input[type="file"] {
-      position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%;
-    }
-    .upload-icon { color: var(--color-primary); margin-inline: auto; margin-bottom: var(--space-4); }
-    .upload-zone-text { font-size: var(--text-base); color: var(--color-text); font-weight: 500; margin-bottom: var(--space-1); }
-    .upload-zone-hint { font-size: var(--text-sm); color: var(--color-text-muted); }
 
-    .preview-section { display: none; margin-top: var(--space-10); }
-    .preview-section.visible { display: block; }
-    .preview-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: var(--space-6);
+    .upload-zone input[type="file"] {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      cursor: pointer;
+      width: 100%;
+      height: 100%;
     }
-    @media (max-width: 600px) { .preview-grid { grid-template-columns: 1fr; } }
+
+    .upload-icon {
+      color: var(--color-primary);
+      margin-inline: auto;
+      margin-bottom: var(--space-4);
+    }
+
+    .upload-zone-text {
+      font-size: var(--text-base);
+      color: var(--color-text);
+      font-weight: 500;
+      margin-bottom: var(--space-1);
+    }
+
+    .upload-zone-hint {
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+    }
+
+    .preview-section {
+      display: none;
+      margin-top: var(--space-10);
+    }
+
+    .preview-section.visible {
+      display: block;
+    }
+
+    .preview-grid {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    @media (max-width: 800px) {
+      .preview-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 500px) {
+      .preview-grid {
+        grid-template-columns: 1fr;
+      }
+    }
 
     .preview-card {
       background: var(--color-surface);
@@ -119,6 +223,7 @@
       overflow: hidden;
       box-shadow: var(--shadow-sm);
     }
+
     .preview-card-header {
       padding: var(--space-3) var(--space-4);
       font-size: var(--text-sm);
@@ -127,42 +232,84 @@
       text-transform: uppercase;
       letter-spacing: .05em;
       border-bottom: 1px solid var(--color-divider);
-      display: flex; align-items: center; justify-content: space-between;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
-    .card-header-left { display: flex; align-items: center; gap: var(--space-2); }
-    .card-actions { display: flex; align-items: center; gap: var(--space-2); }
+
+    .card-header-left {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+    }
+
+    .card-actions {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+    }
 
     .badge {
-      display: inline-flex; align-items: center;
+      display: inline-flex;
+      align-items: center;
       padding: 2px var(--space-2);
       border-radius: var(--radius-full);
       font-size: var(--text-xs);
       font-weight: 600;
       letter-spacing: .03em;
     }
-    .badge-original { background: var(--color-surface-offset); color: var(--color-text-muted); }
-    .badge-processed { background: var(--color-primary-hl); color: var(--color-primary); }
+
+    .badge-original {
+      background: var(--color-surface-offset);
+      color: var(--color-text-muted);
+    }
+
+    .badge-processed {
+      background: var(--color-primary-hl);
+      color: var(--color-primary);
+    }
 
     .icon-btn {
-      width: 28px; height: 28px;
-      display: grid; place-items: center;
+      width: 28px;
+      height: 28px;
+      display: grid;
+      place-items: center;
       border-radius: var(--radius-sm);
       color: var(--color-text-faint);
       flex-shrink: 0;
     }
-    .icon-btn:hover { background: var(--color-surface-offset); color: var(--color-text-muted); }
-    .icon-btn:disabled { opacity: .3; pointer-events: none; }
+
+    .icon-btn:hover {
+      background: var(--color-surface-offset);
+      color: var(--color-text-muted);
+    }
+
+    .icon-btn:disabled {
+      opacity: .3;
+      pointer-events: none;
+    }
 
     .preview-img-wrap {
       aspect-ratio: 4/3;
       background: var(--color-surface-offset);
-      display: flex; align-items: center; justify-content: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       overflow: hidden;
       cursor: zoom-in;
     }
-    .preview-img-wrap img { width: 100%; height: 100%; object-fit: contain; }
+
+    .preview-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
     .preview-placeholder {
-      display: flex; flex-direction: column; align-items: center; gap: var(--space-3);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-3);
       color: var(--color-text-faint);
       font-size: var(--text-sm);
       cursor: default;
@@ -170,11 +317,16 @@
 
     .actions {
       margin-top: var(--space-8);
-      display: flex; align-items: center; gap: var(--space-4); flex-wrap: wrap;
+      display: flex;
+      align-items: center;
+      gap: var(--space-4);
+      flex-wrap: wrap;
     }
 
     .btn {
-      display: inline-flex; align-items: center; gap: var(--space-2);
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
       padding: var(--space-3) var(--space-6);
       border-radius: var(--radius-md);
       font-size: var(--text-sm);
@@ -183,35 +335,81 @@
       border: none;
       text-decoration: none;
     }
-    .btn-primary { background: var(--color-primary); color: #fff; }
-    .btn-primary:hover { background: var(--color-primary-hover); box-shadow: var(--shadow-md); }
-    .btn-primary:active { background: var(--color-primary-active); }
-    .btn-primary:disabled { opacity: .45; pointer-events: none; }
+
+    .btn-primary {
+      background: var(--color-primary);
+      color: #fff;
+    }
+
+    .btn-primary:hover {
+      background: var(--color-primary-hover);
+      box-shadow: var(--shadow-md);
+    }
+
+    .btn-primary:active {
+      background: var(--color-primary-active);
+    }
+
+    .btn-primary:disabled {
+      opacity: .45;
+      pointer-events: none;
+    }
+
     .btn-ghost {
       background: transparent;
       color: var(--color-text-muted);
       border: 1px solid var(--color-border);
     }
-    .btn-ghost:hover { background: var(--color-surface-offset); color: var(--color-text); }
+
+    .btn-ghost:hover {
+      background: var(--color-surface-offset);
+      color: var(--color-text);
+    }
 
     .status-bar {
       display: none;
-      align-items: center; gap: var(--space-3);
+      align-items: center;
+      gap: var(--space-3);
       margin-top: var(--space-6);
       padding: var(--space-4);
       border-radius: var(--radius-lg);
       font-size: var(--text-sm);
     }
-    .status-bar.visible { display: flex; }
-    .status-bar.loading { background: color-mix(in oklch, var(--color-primary) 8%, var(--color-surface)); color: var(--color-primary); }
-    .status-bar.success { background: color-mix(in oklch, var(--color-success) 8%, var(--color-surface)); color: var(--color-success); }
-    .status-bar.error   { background: color-mix(in oklch, var(--color-error) 8%, var(--color-surface)); color: var(--color-error); }
+
+    .status-bar.visible {
+      display: flex;
+    }
+
+    .status-bar.loading {
+      background: color-mix(in oklch, var(--color-primary) 8%, var(--color-surface));
+      color: var(--color-primary);
+    }
+
+    .status-bar.success {
+      background: color-mix(in oklch, var(--color-success) 8%, var(--color-surface));
+      color: var(--color-success);
+    }
+
+    .status-bar.error {
+      background: color-mix(in oklch, var(--color-error) 8%, var(--color-surface));
+      color: var(--color-error);
+    }
 
     .spinner {
-      width: 18px; height: 18px; border: 2px solid currentColor; border-top-color: transparent;
-      border-radius: 50%; animation: spin .7s linear infinite; flex-shrink: 0;
+      width: 18px;
+      height: 18px;
+      border: 2px solid currentColor;
+      border-top-color: transparent;
+      border-radius: 50%;
+      animation: spin .7s linear infinite;
+      flex-shrink: 0;
     }
-    @keyframes spin { to { transform: rotate(360deg); } }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
 
     footer {
       text-align: center;
@@ -224,297 +422,372 @@
     /* === LIGHTBOX === */
     .lightbox {
       display: none;
-      position: fixed; inset: 0; z-index: 100;
-      background: rgba(0,0,0,.92);
-      align-items: center; justify-content: center;
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      background: rgba(0, 0, 0, .92);
+      align-items: center;
+      justify-content: center;
       padding: var(--space-6);
       cursor: zoom-out;
     }
-    .lightbox.open { display: flex; }
+
+    .lightbox.open {
+      display: flex;
+    }
+
     .lightbox img {
-      max-width: 100%; max-height: 90dvh;
+      max-width: 100%;
+      max-height: 90dvh;
       border-radius: var(--radius-lg);
       box-shadow: var(--shadow-lg);
       object-fit: contain;
       cursor: default;
     }
+
     .lightbox-close {
-      position: absolute; top: var(--space-4); right: var(--space-4);
-      width: 40px; height: 40px;
-      display: grid; place-items: center;
+      position: absolute;
+      top: var(--space-4);
+      right: var(--space-4);
+      width: 40px;
+      height: 40px;
+      display: grid;
+      place-items: center;
       border-radius: var(--radius-full);
-      background: rgba(255,255,255,.1);
+      background: rgba(255, 255, 255, .1);
       color: #fff;
       cursor: pointer;
     }
-    .lightbox-close:hover { background: rgba(255,255,255,.2); }
+
+    .lightbox-close:hover {
+      background: rgba(255, 255, 255, .2);
+    }
+
     .lightbox-label {
-      position: absolute; bottom: var(--space-6);
-      font-size: var(--text-sm); color: rgba(255,255,255,.5);
+      position: absolute;
+      bottom: var(--space-6);
+      font-size: var(--text-sm);
+      color: rgba(255, 255, 255, .5);
     }
   </style>
 </head>
+
 <body>
 
-<header class="header">
-  <a class="logo" href="/">
-    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-label="Логотип" xmlns="http://www.w3.org/2000/svg">
-      <rect width="32" height="32" rx="8" fill="currentColor" opacity=".12"/>
-      <path d="M7 22 L13 14 L17 18 L21 12 L25 22 Z" fill="currentColor" opacity=".7"/>
-      <circle cx="22" cy="10" r="3" fill="currentColor"/>
-    </svg>
-    ВКР
-  </a>
-</header>
-
-<main>
-  <h1 class="page-title">Обработка изображений</h1>
-  <p class="page-subtitle">Загрузите фотографию и нажмите «Обработать» для запуска нейронной сети.</p>
-
-  <div class="upload-zone" id="uploadZone">
-    <input type="file" id="fileInput" accept="image/*" aria-label="Выбрать изображение" />
-    <svg class="upload-icon" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-      <rect x="3" y="3" width="18" height="18" rx="2"/>
-      <path d="M3 16 l4-4 4 4 4-6 6 8"/>
-      <circle cx="8.5" cy="8.5" r="1.5"/>
-    </svg>
-    <p class="upload-zone-text">Нажмите или перетащите изображение сюда</p>
-    <p class="upload-zone-hint">PNG, JPG, WEBP — до 50 МБ</p>
-  </div>
-
-  <div class="actions">
-    <button class="btn btn-primary" id="processBtn" disabled>
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-        <path d="M12 2a10 10 0 1 0 10 10"/>
-        <path d="M22 2l-10 10M22 2h-6M22 2v6"/>
+  <header class="header">
+    <a class="logo" href="/">
+      <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-label="Логотип"
+        xmlns="http://www.w3.org/2000/svg">
+        <rect width="32" height="32" rx="8" fill="currentColor" opacity=".12" />
+        <path d="M7 22 L13 14 L17 18 L21 12 L25 22 Z" fill="currentColor" opacity=".7" />
+        <circle cx="22" cy="10" r="3" fill="currentColor" />
       </svg>
-      Обработать
-    </button>
-    <button class="btn btn-ghost" id="resetBtn" style="display:none">Сбросить</button>
-  </div>
+      ВКР
+    </a>
+  </header>
 
-  <div class="status-bar" id="statusBar">
-    <span class="spinner" id="statusSpinner" style="display:none"></span>
-    <svg id="statusIcon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="display:none">
-      <polyline points="20 6 9 17 4 12"/>
-    </svg>
-    <span id="statusText"></span>
-  </div>
+  <main>
+    <h1 class="page-title">Обработка изображений</h1>
+    <p class="page-subtitle">Загрузите фотографию и нажмите «Обработать» для запуска нейронной сети.</p>
 
-  <section class="preview-section" id="previewSection" aria-label="Предпросмотр">
-    <div class="preview-grid">
-      <!-- Original -->
-      <div class="preview-card">
-        <div class="preview-card-header">
-          <div class="card-header-left">
-            <span class="badge badge-original">Оригинал</span>
-          </div>
-          <div class="card-actions">
-            <button class="icon-btn" id="expandOriginal" title="Открыть на весь экран" disabled>
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M8 3H5a2 2 0 0 0-2 2v3M21 8V5a2 2 0 0 0-2-2h-3M16 21h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/>
-              </svg>
-            </button>
-          </div>
-        </div>
-        <div class="preview-img-wrap" id="originalWrap">
-          <img id="originalPreview" src="" alt="Оригинальное изображение" style="display:none" />
-          <div class="preview-placeholder" id="originalPlaceholder">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <rect x="3" y="3" width="18" height="18" rx="2"/>
-              <path d="M3 16 l4-4 4 4 4-6 6 8"/>
-            </svg>
-            <span>Изображение не загружено</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Processed -->
-      <div class="preview-card">
-        <div class="preview-card-header">
-          <div class="card-header-left">
-            <span class="badge badge-processed">Результат</span>
-          </div>
-          <div class="card-actions">
-            <button class="icon-btn" id="downloadBtn" title="Скачать результат" disabled>
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-                <polyline points="7 10 12 15 17 10"/>
-                <line x1="12" y1="15" x2="12" y2="3"/>
-              </svg>
-            </button>
-            <button class="icon-btn" id="expandProcessed" title="Открыть на весь экран" disabled>
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M8 3H5a2 2 0 0 0-2 2v3M21 8V5a2 2 0 0 0-2-2h-3M16 21h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/>
-              </svg>
-            </button>
-          </div>
-        </div>
-        <div class="preview-img-wrap" id="processedWrap">
-          <img id="processedPreview" src="" alt="Обработанное изображение" style="display:none" />
-          <div class="preview-placeholder" id="processedPlaceholder">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <path d="M12 2a10 10 0 1 0 10 10"/>
-              <path d="M22 2l-10 10M22 2h-6M22 2v6"/>
-            </svg>
-            <span>Ожидание обработки</span>
-          </div>
-        </div>
-      </div>
+    <div class="upload-zone" id="uploadZone">
+      <input type="file" id="fileInput" accept="image/*" aria-label="Выбрать изображение" />
+      <svg class="upload-icon" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+        stroke-width="1.5">
+        <rect x="3" y="3" width="18" height="18" rx="2" />
+        <path d="M3 16 l4-4 4 4 4-6 6 8" />
+        <circle cx="8.5" cy="8.5" r="1.5" />
+      </svg>
+      <p class="upload-zone-text">Нажмите или перетащите изображение сюда</p>
+      <p class="upload-zone-hint">PNG, JPG, WEBP — до 50 МБ</p>
     </div>
-  </section>
-</main>
 
-<footer>ВКР &mdash; Прототип системы обработки изображений</footer>
+    <div class="actions">
+      <button class="btn btn-primary" id="processBtn" disabled>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <path d="M12 2a10 10 0 1 0 10 10" />
+          <path d="M22 2l-10 10M22 2h-6M22 2v6" />
+        </svg>
+        Обработать
+      </button>
+      <button class="btn btn-ghost" id="resetBtn" style="display:none">Сбросить</button>
+    </div>
 
-<!-- Lightbox -->
-<div class="lightbox" id="lightbox" role="dialog" aria-label="Просмотр изображения">
-  <button class="lightbox-close" id="lightboxClose" aria-label="Закрыть">
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-      <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
-    </svg>
-  </button>
-  <img id="lightboxImg" src="" alt="" />
-  <span class="lightbox-label" id="lightboxLabel"></span>
-</div>
+    <div class="status-bar" id="statusBar">
+      <span class="spinner" id="statusSpinner" style="display:none"></span>
+      <svg id="statusIcon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+        stroke-width="2.5" style="display:none">
+        <polyline points="20 6 9 17 4 12" />
+      </svg>
+      <span id="statusText"></span>
+    </div>
 
-<script>
-  const fileInput          = document.getElementById('fileInput');
-  const uploadZone         = document.getElementById('uploadZone');
-  const processBtn         = document.getElementById('processBtn');
-  const resetBtn           = document.getElementById('resetBtn');
-  const previewSection     = document.getElementById('previewSection');
-  const originalPreview    = document.getElementById('originalPreview');
-  const processedPreview   = document.getElementById('processedPreview');
-  const originalPlaceholder  = document.getElementById('originalPlaceholder');
-  const processedPlaceholder = document.getElementById('processedPlaceholder');
-  const statusBar          = document.getElementById('statusBar');
-  const statusText         = document.getElementById('statusText');
-  const statusSpinner      = document.getElementById('statusSpinner');
-  const statusIcon         = document.getElementById('statusIcon');
-  const downloadBtn        = document.getElementById('downloadBtn');
-  const expandOriginal     = document.getElementById('expandOriginal');
-  const expandProcessed    = document.getElementById('expandProcessed');
-  const originalWrap       = document.getElementById('originalWrap');
-  const processedWrap      = document.getElementById('processedWrap');
-  const lightbox           = document.getElementById('lightbox');
-  const lightboxImg        = document.getElementById('lightboxImg');
-  const lightboxLabel      = document.getElementById('lightboxLabel');
-  const lightboxClose      = document.getElementById('lightboxClose');
+    <section class="preview-section" id="previewSection" aria-label="Предпросмотр">
+      <div class="preview-grid">
+        <!-- Original -->
+        <div class="preview-card">
+          <div class="preview-card-header">
+            <div class="card-header-left">
+              <span class="badge badge-original">Оригинал</span>
+            </div>
+            <div class="card-actions">
+              <button class="icon-btn" id="expandOriginal" title="Открыть на весь экран" disabled>
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path
+                    d="M8 3H5a2 2 0 0 0-2 2v3M21 8V5a2 2 0 0 0-2-2h-3M16 21h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3" />
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div class="preview-img-wrap" id="originalWrap">
+            <img id="originalPreview" src="" alt="Оригинальное изображение" style="display:none" />
+            <div class="preview-placeholder" id="originalPlaceholder">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <rect x="3" y="3" width="18" height="18" rx="2" />
+                <path d="M3 16 l4-4 4 4 4-6 6 8" />
+              </svg>
+              <span>Изображение не загружено</span>
+            </div>
+          </div>
+        </div>
 
-  let selectedFile = null;
-  let processedUrl = null;
+        <!-- Processed -->
+        <div class="preview-card">
+          <div class="preview-card-header">
+            <div class="card-header-left">
+              <span class="badge badge-processed">Результат</span>
+            </div>
+            <div class="card-actions">
+              <button class="icon-btn" id="downloadBtn" title="Скачать результат" disabled>
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                  <polyline points="7 10 12 15 17 10" />
+                  <line x1="12" y1="15" x2="12" y2="3" />
+                </svg>
+              </button>
+              <button class="icon-btn" id="expandProcessed" title="Открыть на весь экран" disabled>
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path
+                    d="M8 3H5a2 2 0 0 0-2 2v3M21 8V5a2 2 0 0 0-2-2h-3M16 21h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3" />
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div class="preview-img-wrap" id="processedWrap">
+            <img id="processedPreview" src="" alt="Обработанное изображение" style="display:none" />
+            <div class="preview-placeholder" id="processedPlaceholder">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M12 2a10 10 0 1 0 10 10" />
+                <path d="M22 2l-10 10M22 2h-6M22 2v6" />
+              </svg>
+              <span>Ожидание обработки</span>
+            </div>
+          </div>
+        </div>
 
-  // Drag & drop
-  uploadZone.addEventListener('dragover', e => { e.preventDefault(); uploadZone.classList.add('drag-over'); });
-  uploadZone.addEventListener('dragleave', () => uploadZone.classList.remove('drag-over'));
-  uploadZone.addEventListener('drop', e => {
-    e.preventDefault();
-    uploadZone.classList.remove('drag-over');
-    const f = e.dataTransfer.files[0];
-    if (f && f.type.startsWith('image/')) loadFile(f);
-  });
-  fileInput.addEventListener('change', () => { if (fileInput.files[0]) loadFile(fileInput.files[0]); });
+        <!-- Inpainted -->
+        <div class="preview-card">
+          <div class="preview-card-header">
+            <div class="card-header-left">
+              <span class="badge badge-processed" style="background:#2d3a2d;color:#6daa45">Ретушь</span>
+            </div>
+            <div class="card-actions">
+              <button class="icon-btn" id="downloadInpainted" title="Скачать результат" disabled>
+                <!-- download svg -->
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                  <polyline points="7 10 12 15 17 10" />
+                  <line x1="12" y1="15" x2="12" y2="3" />
+                </svg>
+              </button>
+              <button class="icon-btn" id="expandInpainted" title="Открыть на весь экран" disabled>
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path
+                    d="M8 3H5a2 2 0 0 0-2 2v3M21 8V5a2 2 0 0 0-2-2h-3M16 21h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3" />
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div class="preview-img-wrap" id="inpaintedWrap">
+            <img id="inpaintedPreview" src="" alt="Заретушированное изображение" style="display:none" />
+            <div class="preview-placeholder" id="inpaintedPlaceholder">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <rect x="3" y="3" width="18" height="18" rx="2" />
+                <path d="M3 16 l4-4 4 4 4-6 6 8" />
+              </svg>
+              <span>Ожидание ретуши</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
 
-  function loadFile(file) {
-    selectedFile = file;
-    processedUrl = null;
-    const url = URL.createObjectURL(file);
-    originalPreview.src = url;
-    originalPreview.style.display = 'block';
-    originalPlaceholder.style.display = 'none';
-    processedPreview.style.display = 'none';
-    processedPlaceholder.style.display = 'flex';
-    previewSection.classList.add('visible');
-    processBtn.disabled = false;
-    resetBtn.style.display = 'inline-flex';
-    downloadBtn.disabled = true;
-    expandOriginal.disabled = false;
-    expandProcessed.disabled = true;
-    hideStatus();
-  }
+  <footer>ВКР &mdash; Прототип системы обработки изображений</footer>
 
-  processBtn.addEventListener('click', async () => {
-    if (!selectedFile) return;
-    processBtn.disabled = true;
-    showStatus('loading', 'Обработка изображения...');
-    const formData = new FormData();
-    formData.append('file', selectedFile);
-    try {
-      const res = await fetch('/api/process', { method: 'POST', body: formData });
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      const data = await res.json();
-      processedUrl = data.processed_url;
-      processedPreview.src = processedUrl;
-      processedPreview.style.display = 'block';
-      processedPlaceholder.style.display = 'none';
-      downloadBtn.disabled = false;
-      expandProcessed.disabled = false;
-      showStatus('success', 'Обработка завершена успешно!');
-    } catch (err) {
-      showStatus('error', `Ошибка: ${err.message}`);
-    } finally {
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-label="Просмотр изображения">
+    <button class="lightbox-close" id="lightboxClose" aria-label="Закрыть">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <line x1="18" y1="6" x2="6" y2="18" />
+        <line x1="6" y1="6" x2="18" y2="18" />
+      </svg>
+    </button>
+    <img id="lightboxImg" src="" alt="" />
+    <span class="lightbox-label" id="lightboxLabel"></span>
+  </div>
+
+  <script>
+    const fileInput = document.getElementById('fileInput');
+    const uploadZone = document.getElementById('uploadZone');
+    const processBtn = document.getElementById('processBtn');
+    const resetBtn = document.getElementById('resetBtn');
+    const previewSection = document.getElementById('previewSection');
+    const originalPreview = document.getElementById('originalPreview');
+    const processedPreview = document.getElementById('processedPreview');
+    const originalPlaceholder = document.getElementById('originalPlaceholder');
+    const processedPlaceholder = document.getElementById('processedPlaceholder');
+    const statusBar = document.getElementById('statusBar');
+    const statusText = document.getElementById('statusText');
+    const statusSpinner = document.getElementById('statusSpinner');
+    const statusIcon = document.getElementById('statusIcon');
+    const downloadBtn = document.getElementById('downloadBtn');
+    const expandOriginal = document.getElementById('expandOriginal');
+    const expandProcessed = document.getElementById('expandProcessed');
+    const originalWrap = document.getElementById('originalWrap');
+    const processedWrap = document.getElementById('processedWrap');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const lightboxLabel = document.getElementById('lightboxLabel');
+    const lightboxClose = document.getElementById('lightboxClose');
+
+    let selectedFile = null;
+    let processedUrl = null;
+
+    // Drag & drop
+    uploadZone.addEventListener('dragover', e => { e.preventDefault(); uploadZone.classList.add('drag-over'); });
+    uploadZone.addEventListener('dragleave', () => uploadZone.classList.remove('drag-over'));
+    uploadZone.addEventListener('drop', e => {
+      e.preventDefault();
+      uploadZone.classList.remove('drag-over');
+      const f = e.dataTransfer.files[0];
+      if (f && f.type.startsWith('image/')) loadFile(f);
+    });
+    fileInput.addEventListener('change', () => { if (fileInput.files[0]) loadFile(fileInput.files[0]); });
+
+    function loadFile(file) {
+      selectedFile = file;
+      processedUrl = null;
+      const url = URL.createObjectURL(file);
+      originalPreview.src = url;
+      originalPreview.style.display = 'block';
+      originalPlaceholder.style.display = 'none';
+      processedPreview.style.display = 'none';
+      processedPlaceholder.style.display = 'flex';
+      previewSection.classList.add('visible');
       processBtn.disabled = false;
+      resetBtn.style.display = 'inline-flex';
+      downloadBtn.disabled = true;
+      expandOriginal.disabled = false;
+      expandProcessed.disabled = true;
+      hideStatus();
     }
-  });
 
-  resetBtn.addEventListener('click', () => {
-    selectedFile = null;
-    processedUrl = null;
-    fileInput.value = '';
-    originalPreview.src = '';
-    originalPreview.style.display = 'none';
-    originalPlaceholder.style.display = 'flex';
-    processedPreview.src = '';
-    processedPreview.style.display = 'none';
-    processedPlaceholder.style.display = 'flex';
-    previewSection.classList.remove('visible');
-    processBtn.disabled = true;
-    resetBtn.style.display = 'none';
-    downloadBtn.disabled = true;
-    expandOriginal.disabled = true;
-    expandProcessed.disabled = true;
-    hideStatus();
-  });
+    processBtn.addEventListener('click', async () => {
+      if (!selectedFile) return;
+      processBtn.disabled = true;
+      showStatus('loading', 'Обработка изображения...');
+      const formData = new FormData();
+      formData.append('file', selectedFile);
+      try {
+        const res = await fetch('/api/process', { method: 'POST', body: formData });
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const data = await res.json();
+        processedUrl = data.processed_url;
+        processedPreview.src = processedUrl;
+        processedPreview.style.display = 'block';
+        processedPlaceholder.style.display = 'none';
+        downloadBtn.disabled = false;
+        expandProcessed.disabled = false;
+        inpaintedPreview.src = data.inpainted_url;
+        inpaintedPreview.style.display = 'block';
+        inpaintedPlaceholder.style.display = 'none';
+        downloadInpainted.disabled = false;
+        expandInpainted.disabled = false;
 
-  // Скачать результат
-  downloadBtn.addEventListener('click', () => {
-    if (!processedUrl) return;
-    const a = document.createElement('a');
-    a.href = processedUrl;
-    a.download = 'result.jpg';
-    a.click();
-  });
+        downloadInpainted.addEventListener('click', () => {
+          const a = document.createElement('a');
+          a.href = data.inpainted_url;
+          a.download = 'inpainted.jpg';
+          a.click();
+        });
+        expandInpainted.addEventListener('click', () => openLightbox(inpaintedPreview.src, 'Ретушь'));
+        showStatus('success', 'Обработка завершена успешно!');
+      } catch (err) {
+        showStatus('error', `Ошибка: ${err.message}`);
+      } finally {
+        processBtn.disabled = false;
+      }
+    });
 
-  // Lightbox
-  function openLightbox(src, label) {
-    lightboxImg.src = src;
-    lightboxLabel.textContent = label;
-    lightbox.classList.add('open');
-    document.body.style.overflow = 'hidden';
-  }
-  function closeLightbox() {
-    lightbox.classList.remove('open');
-    document.body.style.overflow = '';
-    lightboxImg.src = '';
-  }
+    resetBtn.addEventListener('click', () => {
+      selectedFile = null;
+      processedUrl = null;
+      fileInput.value = '';
+      originalPreview.src = '';
+      originalPreview.style.display = 'none';
+      originalPlaceholder.style.display = 'flex';
+      processedPreview.src = '';
+      processedPreview.style.display = 'none';
+      processedPlaceholder.style.display = 'flex';
+      previewSection.classList.remove('visible');
+      processBtn.disabled = true;
+      resetBtn.style.display = 'none';
+      downloadBtn.disabled = true;
+      expandOriginal.disabled = true;
+      expandProcessed.disabled = true;
+      hideStatus();
+    });
 
-  expandOriginal.addEventListener('click', () => openLightbox(originalPreview.src, 'Оригинал'));
-  expandProcessed.addEventListener('click', () => openLightbox(processedPreview.src, 'Результат'));
-  originalWrap.addEventListener('click', () => { if (!expandOriginal.disabled) openLightbox(originalPreview.src, 'Оригинал'); });
-  processedWrap.addEventListener('click', () => { if (!expandProcessed.disabled) openLightbox(processedPreview.src, 'Результат'); });
+    // Скачать результат
+    downloadBtn.addEventListener('click', () => {
+      if (!processedUrl) return;
+      const a = document.createElement('a');
+      a.href = processedUrl;
+      a.download = 'result.jpg';
+      a.click();
+    });
 
-  lightboxClose.addEventListener('click', closeLightbox);
-  lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+    // Lightbox
+    function openLightbox(src, label) {
+      lightboxImg.src = src;
+      lightboxLabel.textContent = label;
+      lightbox.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox() {
+      lightbox.classList.remove('open');
+      document.body.style.overflow = '';
+      lightboxImg.src = '';
+    }
 
-  function showStatus(type, msg) {
-    statusBar.className = `status-bar visible ${type}`;
-    statusText.textContent = msg;
-    statusSpinner.style.display = type === 'loading' ? 'block' : 'none';
-    statusIcon.style.display   = type === 'success'  ? 'block' : 'none';
-  }
-  function hideStatus() { statusBar.className = 'status-bar'; }
-</script>
+    expandOriginal.addEventListener('click', () => openLightbox(originalPreview.src, 'Оригинал'));
+    expandProcessed.addEventListener('click', () => openLightbox(processedPreview.src, 'Результат'));
+    originalWrap.addEventListener('click', () => { if (!expandOriginal.disabled) openLightbox(originalPreview.src, 'Оригинал'); });
+    processedWrap.addEventListener('click', () => { if (!expandProcessed.disabled) openLightbox(processedPreview.src, 'Результат'); });
+
+    lightboxClose.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+
+    function showStatus(type, msg) {
+      statusBar.className = `status-bar visible ${type}`;
+      statusText.textContent = msg;
+      statusSpinner.style.display = type === 'loading' ? 'block' : 'none';
+      statusIcon.style.display = type === 'success' ? 'block' : 'none';
+    }
+    function hideStatus() { statusBar.className = 'status-bar'; }
+  </script>
 </body>
+
 </html>
