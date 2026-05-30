@@ -35,7 +35,7 @@ async def index(request: Request):
     return templates.TemplateResponse(request, "index.html")
 
 
-@app.post("/api/process") @ app.post("/api/process")
+@app.post("/api/process")
 async def process_image(request: Request, file: UploadFile = File(...)):
     ext = Path(file.filename).suffix or ".jpg"
     file_id = uuid.uuid4().hex
