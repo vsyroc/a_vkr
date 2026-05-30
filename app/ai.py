@@ -49,7 +49,8 @@ def run_inference(
 
     t0 = perf_counter()
     with torch.no_grad():
-        head = model(torch.from_numpy(image[np.newaxis]))
+        tensor = torch.from_numpy(image[np.newaxis]).to(DEVICE)
+        head = model(tensor)
         head = F.sigmoid(head)
     logger.info(f"Inference time: {perf_counter() - t0:.3f}s")
 
