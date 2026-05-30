@@ -36,20 +36,7 @@ def get_lama():
     return _lama
 
 
-def run_inference(
-    model,
-    input_path: pathlib.Path,
-    mask_path: pathlib.Path,
-    inpainted_path: pathlib.Path,
-    crop: int = CROP_SIZE,
-) -> None:
-    """
-    1. Читает изображение
-    2. Запускает сегментацию → сохраняет маску в mask_path
-    3. Запускает LaMa inpainting → сохраняет результат в inpainted_path
-    """
-
-    # --- Конвертация в TIFF для rasterio ---
+def run_segmentation(model, input_path, mask_path, crop=CROP_SIZE):
     tif_path = input_path.with_suffix(".tif")
     img_pil = Image.open(input_path).convert("RGB")
     img_pil.save(tif_path, format="TIFF")
@@ -63,7 +50,6 @@ def run_inference(
 
     tif_path.unlink(missing_ok=True)
 
-    # --- Сегментация ---
     image_norm = (image_arr / 255.0 * 2) - 1
 
     t0 = perf_counter()
@@ -73,15 +59,19 @@ def run_inference(
         head = F.sigmoid(head)
     logger.info(f"Segmentation time: {perf_counter() - t0:.3f}s")
 
-    head_np = head.cpu().numpy()[0, 0]  # (h, w) float32, 0..1
+    head_np = head.cpu().numpy()[0, 0]
     mask_uint8 = (head_np * 255).astype(np.uint8)
     Image.fromarray(mask_uint8).save(mask_path)
 
-    # --- LaMa inpainting ---
+
+def run_inpainting(input_path, mask_path, inpainted_path):
     lama = get_lama()
 
     orig_pil = Image.open(input_path).convert("RGB")
-    mask_pil = Image.fromarray(mask_uint8).convert("L")
+    mask_pil = Image.open(mask_path).convert("L")
 
+    t0 = perf_counter()
     inpainted_pil = lama(orig_pil, mask_pil)
+    logger.info(f"Inpainting time: {perf_counter() - t0:.3f}s")
+
     inpainted_pil.save(inpainted_path)

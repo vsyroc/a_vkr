@@ -696,35 +696,51 @@
     processBtn.addEventListener('click', async () => {
       if (!selectedFile) return;
       processBtn.disabled = true;
-      showStatus('loading', 'Обработка изображения...');
+
+      showStatus('loading', 'Запуск сегментации...');
       const formData = new FormData();
       formData.append('file', selectedFile);
+
+      let fileId;
       try {
         const res = await fetch('/api/process', { method: 'POST', body: formData });
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         const data = await res.json();
-        processedUrl = data.processed_url;
-        processedPreview.src = processedUrl;
+
+        fileId = data.file_id;
+
+        processedPreview.src = data.mask_url + '?t=' + Date.now();
         processedPreview.style.display = 'block';
         processedPlaceholder.style.display = 'none';
-        downloadBtn.disabled = false;
         expandProcessed.disabled = false;
-        inpaintedPreview.src = data.inpainted_url;
+        downloadBtn.disabled = false;
+        currentMaskUrl = data.mask_url;
+
+        showStatus('loading', 'Маска готова. Запуск ретуши...');
+      } catch (err) {
+        showStatus('error', `Ошибка сегментации: ${err.message}`);
+        processBtn.disabled = false;
+        return;
+      }
+
+      try {
+        const res2 = await fetch('/api/inpaint', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ file_id: fileId }),
+        });
+        if (!res2.ok) throw new Error(`HTTP ${res2.status}`);
+        const data2 = await res2.json();
+
+        inpaintedPreview.src = data2.inpainted_url + '?t=' + Date.now();
         inpaintedPreview.style.display = 'block';
         inpaintedPlaceholder.style.display = 'none';
-        downloadInpainted.disabled = false;
         expandInpainted.disabled = false;
+        downloadInpainted.disabled = false;
 
-        downloadInpainted.addEventListener('click', () => {
-          const a = document.createElement('a');
-          a.href = data.inpainted_url;
-          a.download = 'inpainted.jpg';
-          a.click();
-        });
-        expandInpainted.addEventListener('click', () => openLightbox(inpaintedPreview.src, 'Ретушь'));
-        showStatus('success', 'Обработка завершена успешно!');
+        showStatus('success', 'Обработка завершена!');
       } catch (err) {
-        showStatus('error', `Ошибка: ${err.message}`);
+        showStatus('error', `Ошибка ретуши: ${err.message}`);
       } finally {
         processBtn.disabled = false;
       }
