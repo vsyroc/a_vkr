@@ -91,7 +91,8 @@
     a,
     button,
     input {
-      transition: color var(--transition), background var(--transition), border-color var(--transition), box-shadow var(--transition), opacity var(--transition);
+      transition: color var(--transition), background var(--transition),
+        border-color var(--transition), box-shadow var(--transition), opacity var(--transition);
     }
 
     :focus-visible {
@@ -100,6 +101,7 @@
       border-radius: var(--radius-sm);
     }
 
+    /* === HEADER === */
     .header {
       position: sticky;
       top: 0;
@@ -126,9 +128,10 @@
       color: var(--color-primary);
     }
 
+    /* === MAIN === */
     main {
       flex: 1;
-      max-width: 900px;
+      max-width: 960px;
       width: 100%;
       margin-inline: auto;
       padding: var(--space-12) var(--space-6);
@@ -147,6 +150,7 @@
       margin-bottom: var(--space-10);
     }
 
+    /* === UPLOAD ZONE === */
     .upload-zone {
       border: 2px dashed var(--color-border);
       border-radius: var(--radius-xl);
@@ -191,6 +195,105 @@
       color: var(--color-text-muted);
     }
 
+    /* === ACTIONS === */
+    .actions {
+      margin-top: var(--space-8);
+      display: flex;
+      align-items: center;
+      gap: var(--space-4);
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: var(--space-3) var(--space-6);
+      border-radius: var(--radius-md);
+      font-size: var(--text-sm);
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      text-decoration: none;
+    }
+
+    .btn-primary {
+      background: var(--color-primary);
+      color: #fff;
+    }
+
+    .btn-primary:hover {
+      background: var(--color-primary-hover);
+      box-shadow: var(--shadow-md);
+    }
+
+    .btn-primary:active {
+      background: var(--color-primary-active);
+    }
+
+    .btn-primary:disabled {
+      opacity: .45;
+      pointer-events: none;
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--color-text-muted);
+      border: 1px solid var(--color-border);
+    }
+
+    .btn-ghost:hover {
+      background: var(--color-surface-offset);
+      color: var(--color-text);
+    }
+
+    /* === STATUS === */
+    .status-bar {
+      display: none;
+      align-items: center;
+      gap: var(--space-3);
+      margin-top: var(--space-6);
+      padding: var(--space-4);
+      border-radius: var(--radius-lg);
+      font-size: var(--text-sm);
+    }
+
+    .status-bar.visible {
+      display: flex;
+    }
+
+    .status-bar.loading {
+      background: color-mix(in oklch, var(--color-primary) 8%, var(--color-surface));
+      color: var(--color-primary);
+    }
+
+    .status-bar.success {
+      background: color-mix(in oklch, var(--color-success) 8%, var(--color-surface));
+      color: var(--color-success);
+    }
+
+    .status-bar.error {
+      background: color-mix(in oklch, var(--color-error) 8%, var(--color-surface));
+      color: var(--color-error);
+    }
+
+    .spinner {
+      width: 18px;
+      height: 18px;
+      border: 2px solid currentColor;
+      border-top-color: transparent;
+      border-radius: 50%;
+      animation: spin .7s linear infinite;
+      flex-shrink: 0;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* === PREVIEW === */
     .preview-section {
       display: none;
       margin-top: var(--space-10);
@@ -201,7 +304,9 @@
     }
 
     .preview-grid {
+      display: grid;
       grid-template-columns: 1fr 1fr 1fr;
+      gap: var(--space-6);
     }
 
     @media (max-width: 800px) {
@@ -269,6 +374,11 @@
       color: var(--color-primary);
     }
 
+    .badge-inpainted {
+      background: #2d3a2d;
+      color: #6daa45;
+    }
+
     .icon-btn {
       width: 28px;
       height: 28px;
@@ -315,102 +425,7 @@
       cursor: default;
     }
 
-    .actions {
-      margin-top: var(--space-8);
-      display: flex;
-      align-items: center;
-      gap: var(--space-4);
-      flex-wrap: wrap;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: var(--space-2);
-      padding: var(--space-3) var(--space-6);
-      border-radius: var(--radius-md);
-      font-size: var(--text-sm);
-      font-weight: 600;
-      cursor: pointer;
-      border: none;
-      text-decoration: none;
-    }
-
-    .btn-primary {
-      background: var(--color-primary);
-      color: #fff;
-    }
-
-    .btn-primary:hover {
-      background: var(--color-primary-hover);
-      box-shadow: var(--shadow-md);
-    }
-
-    .btn-primary:active {
-      background: var(--color-primary-active);
-    }
-
-    .btn-primary:disabled {
-      opacity: .45;
-      pointer-events: none;
-    }
-
-    .btn-ghost {
-      background: transparent;
-      color: var(--color-text-muted);
-      border: 1px solid var(--color-border);
-    }
-
-    .btn-ghost:hover {
-      background: var(--color-surface-offset);
-      color: var(--color-text);
-    }
-
-    .status-bar {
-      display: none;
-      align-items: center;
-      gap: var(--space-3);
-      margin-top: var(--space-6);
-      padding: var(--space-4);
-      border-radius: var(--radius-lg);
-      font-size: var(--text-sm);
-    }
-
-    .status-bar.visible {
-      display: flex;
-    }
-
-    .status-bar.loading {
-      background: color-mix(in oklch, var(--color-primary) 8%, var(--color-surface));
-      color: var(--color-primary);
-    }
-
-    .status-bar.success {
-      background: color-mix(in oklch, var(--color-success) 8%, var(--color-surface));
-      color: var(--color-success);
-    }
-
-    .status-bar.error {
-      background: color-mix(in oklch, var(--color-error) 8%, var(--color-surface));
-      color: var(--color-error);
-    }
-
-    .spinner {
-      width: 18px;
-      height: 18px;
-      border: 2px solid currentColor;
-      border-top-color: transparent;
-      border-radius: 50%;
-      animation: spin .7s linear infinite;
-      flex-shrink: 0;
-    }
-
-    @keyframes spin {
-      to {
-        transform: rotate(360deg);
-      }
-    }
-
+    /* === FOOTER === */
     footer {
       text-align: center;
       padding: var(--space-6);
@@ -473,11 +488,9 @@
 </head>
 
 <body>
-
   <header class="header">
     <a class="logo" href="/">
-      <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-label="Логотип"
-        xmlns="http://www.w3.org/2000/svg">
+      <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-label="Логотип">
         <rect width="32" height="32" rx="8" fill="currentColor" opacity=".12" />
         <path d="M7 22 L13 14 L17 18 L21 12 L25 22 Z" fill="currentColor" opacity=".7" />
         <circle cx="22" cy="10" r="3" fill="currentColor" />
@@ -524,7 +537,8 @@
 
     <section class="preview-section" id="previewSection" aria-label="Предпросмотр">
       <div class="preview-grid">
-        <!-- Original -->
+
+        <!-- Оригинал -->
         <div class="preview-card">
           <div class="preview-card-header">
             <div class="card-header-left">
@@ -551,14 +565,14 @@
           </div>
         </div>
 
-        <!-- Processed -->
+        <!-- Результат (маска) -->
         <div class="preview-card">
           <div class="preview-card-header">
             <div class="card-header-left">
               <span class="badge badge-processed">Результат</span>
             </div>
             <div class="card-actions">
-              <button class="icon-btn" id="downloadBtn" title="Скачать результат" disabled>
+              <button class="icon-btn" id="downloadMask" title="Скачать маску" disabled>
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
                   <polyline points="7 10 12 15 17 10" />
@@ -574,7 +588,7 @@
             </div>
           </div>
           <div class="preview-img-wrap" id="processedWrap">
-            <img id="processedPreview" src="" alt="Обработанное изображение" style="display:none" />
+            <img id="processedPreview" src="" alt="Маска сегментации" style="display:none" />
             <div class="preview-placeholder" id="processedPlaceholder">
               <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                 <path d="M12 2a10 10 0 1 0 10 10" />
@@ -585,15 +599,14 @@
           </div>
         </div>
 
-        <!-- Inpainted -->
+        <!-- Ретушь -->
         <div class="preview-card">
           <div class="preview-card-header">
             <div class="card-header-left">
-              <span class="badge badge-processed" style="background:#2d3a2d;color:#6daa45">Ретушь</span>
+              <span class="badge badge-inpainted">Ретушь</span>
             </div>
             <div class="card-actions">
-              <button class="icon-btn" id="downloadInpainted" title="Скачать результат" disabled>
-                <!-- download svg -->
+              <button class="icon-btn" id="downloadInpainted" title="Скачать результат ретуши" disabled>
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
                   <polyline points="7 10 12 15 17 10" />
@@ -619,6 +632,7 @@
             </div>
           </div>
         </div>
+
       </div>
     </section>
   </main>
@@ -638,33 +652,42 @@
   </div>
 
   <script>
+    // --- Элементы ---
     const fileInput = document.getElementById('fileInput');
     const uploadZone = document.getElementById('uploadZone');
     const processBtn = document.getElementById('processBtn');
     const resetBtn = document.getElementById('resetBtn');
     const previewSection = document.getElementById('previewSection');
-    const originalPreview = document.getElementById('originalPreview');
-    const processedPreview = document.getElementById('processedPreview');
-    const originalPlaceholder = document.getElementById('originalPlaceholder');
-    const processedPlaceholder = document.getElementById('processedPlaceholder');
     const statusBar = document.getElementById('statusBar');
     const statusText = document.getElementById('statusText');
     const statusSpinner = document.getElementById('statusSpinner');
     const statusIcon = document.getElementById('statusIcon');
-    const downloadBtn = document.getElementById('downloadBtn');
-    const expandOriginal = document.getElementById('expandOriginal');
-    const expandProcessed = document.getElementById('expandProcessed');
+
+    const originalPreview = document.getElementById('originalPreview');
+    const originalPlaceholder = document.getElementById('originalPlaceholder');
     const originalWrap = document.getElementById('originalWrap');
+    const expandOriginal = document.getElementById('expandOriginal');
+
+    const processedPreview = document.getElementById('processedPreview');
+    const processedPlaceholder = document.getElementById('processedPlaceholder');
     const processedWrap = document.getElementById('processedWrap');
+    const expandProcessed = document.getElementById('expandProcessed');
+    const downloadMask = document.getElementById('downloadMask');
+
+    const inpaintedPreview = document.getElementById('inpaintedPreview');
+    const inpaintedPlaceholder = document.getElementById('inpaintedPlaceholder');
+    const inpaintedWrap = document.getElementById('inpaintedWrap');
+    const expandInpainted = document.getElementById('expandInpainted');
+    const downloadInpainted = document.getElementById('downloadInpainted');
+
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightboxImg');
     const lightboxLabel = document.getElementById('lightboxLabel');
     const lightboxClose = document.getElementById('lightboxClose');
 
     let selectedFile = null;
-    let processedUrl = null;
 
-    // Drag & drop
+    // --- Drag & drop ---
     uploadZone.addEventListener('dragover', e => { e.preventDefault(); uploadZone.classList.add('drag-over'); });
     uploadZone.addEventListener('dragleave', () => uploadZone.classList.remove('drag-over'));
     uploadZone.addEventListener('drop', e => {
@@ -677,26 +700,37 @@
 
     function loadFile(file) {
       selectedFile = file;
-      processedUrl = null;
       const url = URL.createObjectURL(file);
+
       originalPreview.src = url;
       originalPreview.style.display = 'block';
       originalPlaceholder.style.display = 'none';
+      expandOriginal.disabled = false;
+
+      processedPreview.src = '';
       processedPreview.style.display = 'none';
       processedPlaceholder.style.display = 'flex';
+      expandProcessed.disabled = true;
+      downloadMask.disabled = true;
+
+      inpaintedPreview.src = '';
+      inpaintedPreview.style.display = 'none';
+      inpaintedPlaceholder.style.display = 'flex';
+      expandInpainted.disabled = true;
+      downloadInpainted.disabled = true;
+
       previewSection.classList.add('visible');
       processBtn.disabled = false;
       resetBtn.style.display = 'inline-flex';
-      downloadBtn.disabled = true;
-      expandOriginal.disabled = false;
-      expandProcessed.disabled = true;
       hideStatus();
     }
 
+    // --- Обработка ---
     processBtn.addEventListener('click', async () => {
       if (!selectedFile) return;
       processBtn.disabled = true;
 
+      // Шаг 1: сегментация
       showStatus('loading', 'Запуск сегментации...');
       const formData = new FormData();
       formData.append('file', selectedFile);
@@ -713,8 +747,7 @@
         processedPreview.style.display = 'block';
         processedPlaceholder.style.display = 'none';
         expandProcessed.disabled = false;
-        downloadBtn.disabled = false;
-        currentMaskUrl = data.mask_url;
+        downloadMask.disabled = false;
 
         showStatus('loading', 'Маска готова. Запуск ретуши...');
       } catch (err) {
@@ -723,6 +756,7 @@
         return;
       }
 
+      // Шаг 2: inpainting
       try {
         const res2 = await fetch('/api/inpaint', {
           method: 'POST',
@@ -746,35 +780,49 @@
       }
     });
 
+    // --- Сброс ---
     resetBtn.addEventListener('click', () => {
       selectedFile = null;
-      processedUrl = null;
       fileInput.value = '';
+
       originalPreview.src = '';
       originalPreview.style.display = 'none';
       originalPlaceholder.style.display = 'flex';
+      expandOriginal.disabled = true;
+
       processedPreview.src = '';
       processedPreview.style.display = 'none';
       processedPlaceholder.style.display = 'flex';
+      expandProcessed.disabled = true;
+      downloadMask.disabled = true;
+
+      inpaintedPreview.src = '';
+      inpaintedPreview.style.display = 'none';
+      inpaintedPlaceholder.style.display = 'flex';
+      expandInpainted.disabled = true;
+      downloadInpainted.disabled = true;
+
       previewSection.classList.remove('visible');
       processBtn.disabled = true;
       resetBtn.style.display = 'none';
-      downloadBtn.disabled = true;
-      expandOriginal.disabled = true;
-      expandProcessed.disabled = true;
       hideStatus();
     });
 
-    // Скачать результат
-    downloadBtn.addEventListener('click', () => {
-      if (!processedUrl) return;
+    // --- Скачать ---
+    downloadMask.addEventListener('click', () => {
       const a = document.createElement('a');
-      a.href = processedUrl;
-      a.download = 'result.jpg';
+      a.href = processedPreview.src;
+      a.download = 'mask.jpg';
+      a.click();
+    });
+    downloadInpainted.addEventListener('click', () => {
+      const a = document.createElement('a');
+      a.href = inpaintedPreview.src;
+      a.download = 'inpainted.jpg';
       a.click();
     });
 
-    // Lightbox
+    // --- Lightbox ---
     function openLightbox(src, label) {
       lightboxImg.src = src;
       lightboxLabel.textContent = label;
@@ -789,13 +837,17 @@
 
     expandOriginal.addEventListener('click', () => openLightbox(originalPreview.src, 'Оригинал'));
     expandProcessed.addEventListener('click', () => openLightbox(processedPreview.src, 'Результат'));
+    expandInpainted.addEventListener('click', () => openLightbox(inpaintedPreview.src, 'Ретушь'));
+
     originalWrap.addEventListener('click', () => { if (!expandOriginal.disabled) openLightbox(originalPreview.src, 'Оригинал'); });
     processedWrap.addEventListener('click', () => { if (!expandProcessed.disabled) openLightbox(processedPreview.src, 'Результат'); });
+    inpaintedWrap.addEventListener('click', () => { if (!expandInpainted.disabled) openLightbox(inpaintedPreview.src, 'Ретушь'); });
 
     lightboxClose.addEventListener('click', closeLightbox);
     lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
     document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
 
+    // --- Status helpers ---
     function showStatus(type, msg) {
       statusBar.className = `status-bar visible ${type}`;
       statusText.textContent = msg;
