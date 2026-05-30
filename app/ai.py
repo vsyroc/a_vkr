@@ -31,7 +31,7 @@ def get_lama():
     global _lama
     if _lama is None:
         logger.info("Loading LaMa model...")
-        _lama = SimpleLama()
+        _lama = SimpleLama(device=DEVICE)
         logger.info("LaMa model loaded.")
     return _lama
 
