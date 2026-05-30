@@ -21,9 +21,6 @@ poetry.lock
 uploads/
 processed/
 
-# Model checkpoints
-checkpoints/
-
 # Environment variables
 .env
 .env.*
