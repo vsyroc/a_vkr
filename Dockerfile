@@ -3,11 +3,11 @@ FROM pytorch/pytorch:2.3.0-cuda12.1-cudnn8-runtime
 RUN apt-get update && apt-get install -y \
     gcc \
     python3-dev \
+    libglib2.0-0 \
+    libgl1 \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
-
-COPY pyproject.toml .
 
 RUN pip install --no-cache-dir --timeout 300 \
     "fastapi>=0.136.3,<0.137.0" \
@@ -19,7 +19,9 @@ RUN pip install --no-cache-dir --timeout 300 \
     "pillow>=10.0.0,<12.0.0" \
     "rasterio>=1.3.0,<2.0.0" \
     "opencv-python-headless>=4.9.0,<5.0.0" \
-    "albumentations>=1.4.0,<3.0.0"
+    "albumentations>=1.4.0,<3.0.0" \
+    "torchvision>=0.18.0" \
+    "simple-lama-inpainting"
 
 COPY . .
 

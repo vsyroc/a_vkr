@@ -31,6 +31,7 @@ services:
     volumes:
       - media:/media
       - ./checkpoints:/app/checkpoints:ro
+      - lama_cache:/root/.cache
     environment:
       - UPLOADS_DIR=/media/uploads
       - PROCESSED_DIR=/media/processed
@@ -66,3 +67,4 @@ services:
 volumes:
   ssl_certs:
   media:
+  lama_cache: 
