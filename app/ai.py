@@ -14,6 +14,9 @@ from app.networks.modeling import deeplabv3plus_mobilenet
 _model = None
 _lama = None
 
+torch.backends.cudnn.benchmark = True
+torch.backends.cudnn.enabled = True
+
 
 def get_model():
     global _model
@@ -32,7 +35,12 @@ def get_lama():
     if _lama is None:
         logger.info("Loading LaMa model...")
         _lama = SimpleLama(device=DEVICE)
-        logger.info("LaMa model loaded.")
+        if DEVICE.type == "cuda":
+            dummy_img = Image.fromarray(np.zeros((256, 256, 3), dtype=np.uint8))
+            dummy_mask = Image.fromarray(np.zeros((256, 256), dtype=np.uint8))
+            _lama(dummy_img, dummy_mask)
+            logger.info("LaMa warmup done.")
+        logger.info(f"LaMa model loaded. {DEVICE}")
     return _lama
 
 
