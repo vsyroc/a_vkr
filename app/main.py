@@ -8,7 +8,7 @@ from fastapi.responses import HTMLResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 
-from app.ai import get_model, run_inference, get_lama, run_inpainting, run_segmentation
+from app.ai import get_model, get_lama, run_segmentation, run_inpainting
 from app.config import BASE_DIR, UPLOADS_DIR, PROCESSED_DIR
 
 
