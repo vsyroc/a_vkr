@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru" data-theme="light">
+<html lang="ru" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,39 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&display=swap" rel="stylesheet">
   <style>
-    /* === DESIGN TOKENS === */
-    :root, [data-theme="light"] {
-      --color-bg:               #f7f6f2;
-      --color-surface:          #f9f8f5;
-      --color-surface-2:        #ffffff;
-      --color-surface-offset:   #f0ede8;
-      --color-border:           rgba(40,37,29,.10);
-      --color-divider:          rgba(40,37,29,.07);
-      --color-text:             #28251d;
-      --color-text-muted:       #7a7974;
-      --color-text-faint:       #bab9b4;
-      --color-primary:          #01696f;
-      --color-primary-hover:    #0c4e54;
-      --color-primary-active:   #0f3638;
-      --color-primary-hl:       #cedcd8;
-      --color-error:            #a12c7b;
-      --color-success:          #437a22;
-      --radius-sm: .375rem; --radius-md: .5rem; --radius-lg: .75rem; --radius-xl: 1rem; --radius-full: 9999px;
-      --shadow-sm: 0 1px 2px rgba(40,37,29,.06);
-      --shadow-md: 0 4px 12px rgba(40,37,29,.08);
-      --shadow-lg: 0 12px 32px rgba(40,37,29,.12);
-      --transition: 180ms cubic-bezier(.16,1,.3,1);
-      --space-1:.25rem; --space-2:.5rem; --space-3:.75rem; --space-4:1rem;
-      --space-5:1.25rem; --space-6:1.5rem; --space-8:2rem; --space-10:2.5rem;
-      --space-12:3rem; --space-16:4rem;
-      --text-xs:clamp(.75rem,.7rem + .25vw,.875rem);
-      --text-sm:clamp(.875rem,.8rem + .35vw,1rem);
-      --text-base:clamp(1rem,.95rem + .25vw,1.125rem);
-      --text-lg:clamp(1.125rem,1rem + .75vw,1.5rem);
-      --text-xl:clamp(1.5rem,1.2rem + 1.25vw,2.25rem);
-      --font-body: 'Inter', system-ui, sans-serif;
-    }
-    [data-theme="dark"] {
+    :root {
       --color-bg:               #171614;
       --color-surface:          #1c1b19;
       --color-surface-2:        #201f1d;
@@ -56,12 +24,22 @@
       --color-primary-hl:       #313b3b;
       --color-error:            #d163a7;
       --color-success:          #6daa45;
+      --radius-sm: .375rem; --radius-md: .5rem; --radius-lg: .75rem; --radius-xl: 1rem; --radius-full: 9999px;
       --shadow-sm: 0 1px 2px rgba(0,0,0,.2);
       --shadow-md: 0 4px 12px rgba(0,0,0,.3);
       --shadow-lg: 0 12px 32px rgba(0,0,0,.4);
+      --transition: 180ms cubic-bezier(.16,1,.3,1);
+      --space-1:.25rem; --space-2:.5rem; --space-3:.75rem; --space-4:1rem;
+      --space-5:1.25rem; --space-6:1.5rem; --space-8:2rem; --space-10:2.5rem;
+      --space-12:3rem; --space-16:4rem;
+      --text-xs:clamp(.75rem,.7rem + .25vw,.875rem);
+      --text-sm:clamp(.875rem,.8rem + .35vw,1rem);
+      --text-base:clamp(1rem,.95rem + .25vw,1.125rem);
+      --text-lg:clamp(1.125rem,1rem + .75vw,1.5rem);
+      --text-xl:clamp(1.5rem,1.2rem + 1.25vw,2.25rem);
+      --font-body: 'Inter', system-ui, sans-serif;
     }
 
-    /* === BASE === */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { -webkit-font-smoothing: antialiased; scroll-behavior: smooth; }
     body {
@@ -78,13 +56,12 @@
     a, button, input { transition: color var(--transition), background var(--transition), border-color var(--transition), box-shadow var(--transition), opacity var(--transition); }
     :focus-visible { outline: 2px solid var(--color-primary); outline-offset: 3px; border-radius: var(--radius-sm); }
 
-    /* === LAYOUT === */
     .header {
       position: sticky; top: 0; z-index: 10;
       background: var(--color-surface);
       border-bottom: 1px solid var(--color-border);
       padding: var(--space-4) var(--space-6);
-      display: flex; align-items: center; justify-content: space-between;
+      display: flex; align-items: center;
       box-shadow: var(--shadow-sm);
     }
     .logo {
@@ -94,13 +71,6 @@
     }
     .logo svg { color: var(--color-primary); }
 
-    .theme-toggle {
-      width: 40px; height: 40px; border-radius: var(--radius-full);
-      display: grid; place-items: center;
-      color: var(--color-text-muted);
-    }
-    .theme-toggle:hover { background: var(--color-surface-offset); color: var(--color-text); }
-
     main {
       flex: 1;
       max-width: 900px;
@@ -109,19 +79,9 @@
       padding: var(--space-12) var(--space-6);
     }
 
-    .page-title {
-      font-size: var(--text-xl);
-      font-weight: 700;
-      color: var(--color-text);
-      margin-bottom: var(--space-2);
-    }
-    .page-subtitle {
-      font-size: var(--text-base);
-      color: var(--color-text-muted);
-      margin-bottom: var(--space-10);
-    }
+    .page-title { font-size: var(--text-xl); font-weight: 700; color: var(--color-text); margin-bottom: var(--space-2); }
+    .page-subtitle { font-size: var(--text-base); color: var(--color-text-muted); margin-bottom: var(--space-10); }
 
-    /* === UPLOAD ZONE === */
     .upload-zone {
       border: 2px dashed var(--color-border);
       border-radius: var(--radius-xl);
@@ -143,11 +103,7 @@
     .upload-zone-text { font-size: var(--text-base); color: var(--color-text); font-weight: 500; margin-bottom: var(--space-1); }
     .upload-zone-hint { font-size: var(--text-sm); color: var(--color-text-muted); }
 
-    /* === PREVIEW GRID === */
-    .preview-section {
-      display: none;
-      margin-top: var(--space-10);
-    }
+    .preview-section { display: none; margin-top: var(--space-10); }
     .preview-section.visible { display: block; }
     .preview-grid {
       display: grid;
@@ -171,8 +127,11 @@
       text-transform: uppercase;
       letter-spacing: .05em;
       border-bottom: 1px solid var(--color-divider);
-      display: flex; align-items: center; gap: var(--space-2);
+      display: flex; align-items: center; justify-content: space-between;
     }
+    .card-header-left { display: flex; align-items: center; gap: var(--space-2); }
+    .card-actions { display: flex; align-items: center; gap: var(--space-2); }
+
     .badge {
       display: inline-flex; align-items: center;
       padding: 2px var(--space-2);
@@ -184,20 +143,31 @@
     .badge-original { background: var(--color-surface-offset); color: var(--color-text-muted); }
     .badge-processed { background: var(--color-primary-hl); color: var(--color-primary); }
 
+    .icon-btn {
+      width: 28px; height: 28px;
+      display: grid; place-items: center;
+      border-radius: var(--radius-sm);
+      color: var(--color-text-faint);
+      flex-shrink: 0;
+    }
+    .icon-btn:hover { background: var(--color-surface-offset); color: var(--color-text-muted); }
+    .icon-btn:disabled { opacity: .3; pointer-events: none; }
+
     .preview-img-wrap {
       aspect-ratio: 4/3;
       background: var(--color-surface-offset);
       display: flex; align-items: center; justify-content: center;
       overflow: hidden;
+      cursor: zoom-in;
     }
     .preview-img-wrap img { width: 100%; height: 100%; object-fit: contain; }
     .preview-placeholder {
       display: flex; flex-direction: column; align-items: center; gap: var(--space-3);
       color: var(--color-text-faint);
       font-size: var(--text-sm);
+      cursor: default;
     }
 
-    /* === ACTIONS === */
     .actions {
       margin-top: var(--space-8);
       display: flex; align-items: center; gap: var(--space-4); flex-wrap: wrap;
@@ -213,10 +183,7 @@
       border: none;
       text-decoration: none;
     }
-    .btn-primary {
-      background: var(--color-primary);
-      color: #fff;
-    }
+    .btn-primary { background: var(--color-primary); color: #fff; }
     .btn-primary:hover { background: var(--color-primary-hover); box-shadow: var(--shadow-md); }
     .btn-primary:active { background: var(--color-primary-active); }
     .btn-primary:disabled { opacity: .45; pointer-events: none; }
@@ -227,7 +194,6 @@
     }
     .btn-ghost:hover { background: var(--color-surface-offset); color: var(--color-text); }
 
-    /* === STATUS === */
     .status-bar {
       display: none;
       align-items: center; gap: var(--space-3);
@@ -247,7 +213,6 @@
     }
     @keyframes spin { to { transform: rotate(360deg); } }
 
-    /* === FOOTER === */
     footer {
       text-align: center;
       padding: var(--space-6);
@@ -255,13 +220,44 @@
       color: var(--color-text-faint);
       border-top: 1px solid var(--color-divider);
     }
+
+    /* === LIGHTBOX === */
+    .lightbox {
+      display: none;
+      position: fixed; inset: 0; z-index: 100;
+      background: rgba(0,0,0,.92);
+      align-items: center; justify-content: center;
+      padding: var(--space-6);
+      cursor: zoom-out;
+    }
+    .lightbox.open { display: flex; }
+    .lightbox img {
+      max-width: 100%; max-height: 90dvh;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-lg);
+      object-fit: contain;
+      cursor: default;
+    }
+    .lightbox-close {
+      position: absolute; top: var(--space-4); right: var(--space-4);
+      width: 40px; height: 40px;
+      display: grid; place-items: center;
+      border-radius: var(--radius-full);
+      background: rgba(255,255,255,.1);
+      color: #fff;
+      cursor: pointer;
+    }
+    .lightbox-close:hover { background: rgba(255,255,255,.2); }
+    .lightbox-label {
+      position: absolute; bottom: var(--space-6);
+      font-size: var(--text-sm); color: rgba(255,255,255,.5);
+    }
   </style>
 </head>
 <body>
 
 <header class="header">
   <a class="logo" href="/">
-    <!-- SVG Logo -->
     <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-label="Логотип" xmlns="http://www.w3.org/2000/svg">
       <rect width="32" height="32" rx="8" fill="currentColor" opacity=".12"/>
       <path d="M7 22 L13 14 L17 18 L21 12 L25 22 Z" fill="currentColor" opacity=".7"/>
@@ -269,18 +265,12 @@
     </svg>
     ВКР
   </a>
-  <button class="theme-toggle" data-theme-toggle aria-label="Сменить тему">
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
-    </svg>
-  </button>
 </header>
 
 <main>
   <h1 class="page-title">Обработка изображений</h1>
   <p class="page-subtitle">Загрузите фотографию и нажмите «Обработать» для запуска нейронной сети.</p>
 
-  <!-- Upload Zone -->
   <div class="upload-zone" id="uploadZone">
     <input type="file" id="fileInput" accept="image/*" aria-label="Выбрать изображение" />
     <svg class="upload-icon" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
@@ -289,10 +279,9 @@
       <circle cx="8.5" cy="8.5" r="1.5"/>
     </svg>
     <p class="upload-zone-text">Нажмите или перетащите изображение сюда</p>
-    <p class="upload-zone-hint">PNG, JPG, WEBP — до 20 МБ</p>
+    <p class="upload-zone-hint">PNG, JPG, WEBP — до 50 МБ</p>
   </div>
 
-  <!-- Actions -->
   <div class="actions">
     <button class="btn btn-primary" id="processBtn" disabled>
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
@@ -301,12 +290,9 @@
       </svg>
       Обработать
     </button>
-    <button class="btn btn-ghost" id="resetBtn" style="display:none">
-      Сбросить
-    </button>
+    <button class="btn btn-ghost" id="resetBtn" style="display:none">Сбросить</button>
   </div>
 
-  <!-- Status -->
   <div class="status-bar" id="statusBar">
     <span class="spinner" id="statusSpinner" style="display:none"></span>
     <svg id="statusIcon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="display:none">
@@ -315,15 +301,23 @@
     <span id="statusText"></span>
   </div>
 
-  <!-- Preview Section -->
   <section class="preview-section" id="previewSection" aria-label="Предпросмотр">
     <div class="preview-grid">
       <!-- Original -->
       <div class="preview-card">
         <div class="preview-card-header">
-          <span class="badge badge-original">Оригинал</span>
+          <div class="card-header-left">
+            <span class="badge badge-original">Оригинал</span>
+          </div>
+          <div class="card-actions">
+            <button class="icon-btn" id="expandOriginal" title="Открыть на весь экран" disabled>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M8 3H5a2 2 0 0 0-2 2v3M21 8V5a2 2 0 0 0-2-2h-3M16 21h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/>
+              </svg>
+            </button>
+          </div>
         </div>
-        <div class="preview-img-wrap">
+        <div class="preview-img-wrap" id="originalWrap">
           <img id="originalPreview" src="" alt="Оригинальное изображение" style="display:none" />
           <div class="preview-placeholder" id="originalPlaceholder">
             <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
@@ -334,12 +328,29 @@
           </div>
         </div>
       </div>
+
       <!-- Processed -->
       <div class="preview-card">
         <div class="preview-card-header">
-          <span class="badge badge-processed">Результат</span>
+          <div class="card-header-left">
+            <span class="badge badge-processed">Результат</span>
+          </div>
+          <div class="card-actions">
+            <button class="icon-btn" id="downloadBtn" title="Скачать результат" disabled>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                <polyline points="7 10 12 15 17 10"/>
+                <line x1="12" y1="15" x2="12" y2="3"/>
+              </svg>
+            </button>
+            <button class="icon-btn" id="expandProcessed" title="Открыть на весь экран" disabled>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M8 3H5a2 2 0 0 0-2 2v3M21 8V5a2 2 0 0 0-2-2h-3M16 21h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/>
+              </svg>
+            </button>
+          </div>
         </div>
-        <div class="preview-img-wrap">
+        <div class="preview-img-wrap" id="processedWrap">
           <img id="processedPreview" src="" alt="Обработанное изображение" style="display:none" />
           <div class="preview-placeholder" id="processedPlaceholder">
             <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
@@ -356,43 +367,43 @@
 
 <footer>ВКР &mdash; Прототип системы обработки изображений</footer>
 
-<script>
-  // --- Theme toggle ---
-  (function(){
-    const t = document.querySelector('[data-theme-toggle]');
-    const r = document.documentElement;
-    let d = matchMedia('(prefers-color-scheme:dark)').matches ? 'dark' : 'light';
-    r.setAttribute('data-theme', d);
-    updateToggleIcon(d);
-    t && t.addEventListener('click', () => {
-      d = d === 'dark' ? 'light' : 'dark';
-      r.setAttribute('data-theme', d);
-      updateToggleIcon(d);
-    });
-    function updateToggleIcon(theme) {
-      if (!t) return;
-      t.innerHTML = theme === 'dark'
-        ? '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>'
-        : '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
-    }
-  })();
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" role="dialog" aria-label="Просмотр изображения">
+  <button class="lightbox-close" id="lightboxClose" aria-label="Закрыть">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+      <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+    </svg>
+  </button>
+  <img id="lightboxImg" src="" alt="" />
+  <span class="lightbox-label" id="lightboxLabel"></span>
+</div>
 
-  // --- App logic ---
-  const fileInput     = document.getElementById('fileInput');
-  const uploadZone    = document.getElementById('uploadZone');
-  const processBtn    = document.getElementById('processBtn');
-  const resetBtn      = document.getElementById('resetBtn');
-  const previewSection  = document.getElementById('previewSection');
-  const originalPreview  = document.getElementById('originalPreview');
-  const processedPreview = document.getElementById('processedPreview');
+<script>
+  const fileInput          = document.getElementById('fileInput');
+  const uploadZone         = document.getElementById('uploadZone');
+  const processBtn         = document.getElementById('processBtn');
+  const resetBtn           = document.getElementById('resetBtn');
+  const previewSection     = document.getElementById('previewSection');
+  const originalPreview    = document.getElementById('originalPreview');
+  const processedPreview   = document.getElementById('processedPreview');
   const originalPlaceholder  = document.getElementById('originalPlaceholder');
   const processedPlaceholder = document.getElementById('processedPlaceholder');
-  const statusBar    = document.getElementById('statusBar');
-  const statusText   = document.getElementById('statusText');
-  const statusSpinner = document.getElementById('statusSpinner');
-  const statusIcon   = document.getElementById('statusIcon');
+  const statusBar          = document.getElementById('statusBar');
+  const statusText         = document.getElementById('statusText');
+  const statusSpinner      = document.getElementById('statusSpinner');
+  const statusIcon         = document.getElementById('statusIcon');
+  const downloadBtn        = document.getElementById('downloadBtn');
+  const expandOriginal     = document.getElementById('expandOriginal');
+  const expandProcessed    = document.getElementById('expandProcessed');
+  const originalWrap       = document.getElementById('originalWrap');
+  const processedWrap      = document.getElementById('processedWrap');
+  const lightbox           = document.getElementById('lightbox');
+  const lightboxImg        = document.getElementById('lightboxImg');
+  const lightboxLabel      = document.getElementById('lightboxLabel');
+  const lightboxClose      = document.getElementById('lightboxClose');
 
   let selectedFile = null;
+  let processedUrl = null;
 
   // Drag & drop
   uploadZone.addEventListener('dragover', e => { e.preventDefault(); uploadZone.classList.add('drag-over'); });
@@ -403,25 +414,23 @@
     const f = e.dataTransfer.files[0];
     if (f && f.type.startsWith('image/')) loadFile(f);
   });
-
-  fileInput.addEventListener('change', () => {
-    if (fileInput.files[0]) loadFile(fileInput.files[0]);
-  });
+  fileInput.addEventListener('change', () => { if (fileInput.files[0]) loadFile(fileInput.files[0]); });
 
   function loadFile(file) {
     selectedFile = file;
+    processedUrl = null;
     const url = URL.createObjectURL(file);
     originalPreview.src = url;
     originalPreview.style.display = 'block';
     originalPlaceholder.style.display = 'none';
-
-    // Reset processed side
     processedPreview.style.display = 'none';
     processedPlaceholder.style.display = 'flex';
-
     previewSection.classList.add('visible');
     processBtn.disabled = false;
     resetBtn.style.display = 'inline-flex';
+    downloadBtn.disabled = true;
+    expandOriginal.disabled = false;
+    expandProcessed.disabled = true;
     hideStatus();
   }
 
@@ -429,18 +438,18 @@
     if (!selectedFile) return;
     processBtn.disabled = true;
     showStatus('loading', 'Обработка изображения...');
-
     const formData = new FormData();
     formData.append('file', selectedFile);
-
     try {
       const res = await fetch('/api/process', { method: 'POST', body: formData });
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       const data = await res.json();
-
-      processedPreview.src = data.processed_url;
+      processedUrl = data.processed_url;
+      processedPreview.src = processedUrl;
       processedPreview.style.display = 'block';
       processedPlaceholder.style.display = 'none';
+      downloadBtn.disabled = false;
+      expandProcessed.disabled = false;
       showStatus('success', 'Обработка завершена успешно!');
     } catch (err) {
       showStatus('error', `Ошибка: ${err.message}`);
@@ -451,6 +460,7 @@
 
   resetBtn.addEventListener('click', () => {
     selectedFile = null;
+    processedUrl = null;
     fileInput.value = '';
     originalPreview.src = '';
     originalPreview.style.display = 'none';
@@ -461,8 +471,42 @@
     previewSection.classList.remove('visible');
     processBtn.disabled = true;
     resetBtn.style.display = 'none';
+    downloadBtn.disabled = true;
+    expandOriginal.disabled = true;
+    expandProcessed.disabled = true;
     hideStatus();
   });
+
+  // Скачать результат
+  downloadBtn.addEventListener('click', () => {
+    if (!processedUrl) return;
+    const a = document.createElement('a');
+    a.href = processedUrl;
+    a.download = 'result.jpg';
+    a.click();
+  });
+
+  // Lightbox
+  function openLightbox(src, label) {
+    lightboxImg.src = src;
+    lightboxLabel.textContent = label;
+    lightbox.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox() {
+    lightbox.classList.remove('open');
+    document.body.style.overflow = '';
+    lightboxImg.src = '';
+  }
+
+  expandOriginal.addEventListener('click', () => openLightbox(originalPreview.src, 'Оригинал'));
+  expandProcessed.addEventListener('click', () => openLightbox(processedPreview.src, 'Результат'));
+  originalWrap.addEventListener('click', () => { if (!expandOriginal.disabled) openLightbox(originalPreview.src, 'Оригинал'); });
+  processedWrap.addEventListener('click', () => { if (!expandProcessed.disabled) openLightbox(processedPreview.src, 'Результат'); });
+
+  lightboxClose.addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
 
   function showStatus(type, msg) {
     statusBar.className = `status-bar visible ${type}`;
@@ -470,9 +514,7 @@
     statusSpinner.style.display = type === 'loading' ? 'block' : 'none';
     statusIcon.style.display   = type === 'success'  ? 'block' : 'none';
   }
-  function hideStatus() {
-    statusBar.className = 'status-bar';
-  }
+  function hideStatus() { statusBar.className = 'status-bar'; }
 </script>
 </body>
 </html>
