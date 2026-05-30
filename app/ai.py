@@ -27,12 +27,11 @@ def get_model():
 
 
 def run_inference(
-    input_path: pathlib.Path, output_path: pathlib.Path, crop: int = 3000
+    model, input_path: pathlib.Path, output_path: pathlib.Path, crop: int = 3000
 ) -> None:
     """
     Принимает путь к изображению, запускает модель, сохраняет результат.
     """
-    model = get_model()
 
     # Конвертируем входной файл в TIFF для gdal
     tif_path = input_path.with_suffix(".tif")

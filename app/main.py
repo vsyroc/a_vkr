@@ -1,3 +1,4 @@
+from contextlib import asynccontextmanager
 import uuid
 import shutil
 from pathlib import Path
@@ -7,10 +8,17 @@ from fastapi.responses import HTMLResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 
-from app.ai import run_inference
+from app.ai import get_model, run_inference
 from app.config import BASE_DIR, UPLOADS_DIR, PROCESSED_DIR
 
-app = FastAPI(title="ВКР — Обработка изображений")
+
+@asynccontextmanager
+async def lifespan(app):
+    app.state.model = get_model()
+    yield
+
+
+app = FastAPI(title="ВКР — Обработка изображений", lifespan=lifespan)
 
 UPLOADS_DIR.mkdir(exist_ok=True)
 PROCESSED_DIR.mkdir(exist_ok=True)
@@ -27,7 +35,7 @@ async def index(request: Request):
 
 
 @app.post("/api/process")
-async def process_image(file: UploadFile = File(...)):
+async def process_image(request: Request, file: UploadFile = File(...)):
     ext = Path(file.filename).suffix or ".jpg"
     file_id = uuid.uuid4().hex
 
@@ -38,7 +46,7 @@ async def process_image(file: UploadFile = File(...)):
     processed_path = PROCESSED_DIR / f"{file_id}_processed.jpg"
 
     try:
-        run_inference(original_path, processed_path)
+        run_inference(request.app.state.model, original_path, processed_path)
     except Exception as e:
         return JSONResponse({"error": str(e)}, status_code=500)
 
