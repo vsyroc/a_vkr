@@ -249,6 +249,9 @@ openssl dhparam -out /etc/ssl/dhparam.pem 4096
 
 ***
 
+## Презентация
+Ссылка на презентацию https://docs.google.com/presentation/d/1Qvwj1BH5LI65b9KdfHRuHZYihYmAmA91/edit?usp=sharing&ouid=117519297675945571237&rtpof=true&sd=true
+
 ## Лицензия
 
-Проект разработан в рамках выпускной квалификационной работы. Все права защищены.
+Проект разработан в рамках выпускной квалификационной работы.
